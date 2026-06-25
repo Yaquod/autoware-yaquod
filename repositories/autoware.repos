@@ -36,7 +36,7 @@ repositories:
   universe/autoware_universe:
     type: git
     url: https://github.com/Yaquod/autoware_universe_yaquod.git
-    version: yaquod_0.1
+    version: yaquod/traffic_light_classifier-integration
   universe/external/tier4_autoware_msgs:
     type: git
     url: https://github.com/tier4/tier4_autoware_msgs.git
@@ -94,7 +94,7 @@ repositories:
   launcher/autoware_launch:
     type: git
     url: https://github.com/Yaquod/autoware_launch_yaquod.git
-    version: yaquod_0.1 
+    version: yaquod/traffic_light_classifier-integration 
   # sensor_component
   sensor_component/external/sensor_component_description:
     type: git

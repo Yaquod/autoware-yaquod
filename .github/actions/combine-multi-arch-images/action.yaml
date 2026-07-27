@@ -54,8 +54,8 @@ runs:
     - name: Get base tags
       id: get-base-tags
       run: |
-        amd64_tags=$(printf "%s\n" $ALL_TAGS | grep "\-amd64" | sed "s/-amd64$//g")
-        arm64_tags=$(printf "%s\n" $ALL_TAGS | grep "\-arm64" | sed "s/-arm64$//g")
+        amd64_tags=$(printf "%s\n" $ALL_TAGS | grep "\-amd64" || true | sed "s/-amd64$//g")
+        arm64_tags=$(printf "%s\n" $ALL_TAGS | grep "\-arm64" || true | sed "s/-arm64$//g")
         base_tags=$(printf "%s\n" "$amd64_tags" "$arm64_tags" | sort | uniq)
 
         echo -e "\n[amd64_tags]\n$amd64_tags"

@@ -47,6 +47,10 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Set lower case owner and repository name
+        run: |
+          echo "REPO_LOWER=${GITHUB_REPOSITORY,,}" >> $GITHUB_ENV
+
       - name: Get changed files
         id: changed-files
         uses: step-security/changed-files@v46
@@ -81,9 +85,9 @@ jobs:
             *.args.AUTOWARE_BASE_IMAGE=${{ needs.load-env.outputs.autoware_base_image }}
             *.args.AUTOWARE_BASE_CUDA_IMAGE=${{ needs.load-env.outputs.autoware_base_cuda_image }}
             *.args.LIB_DIR=${{ matrix.lib-dir }}
-            *.cache-from=type=registry,ref=ghcr.io/${{ github.repository }}-buildcache:${{ matrix.platform }}-${{ github.ref_name }}
-            *.cache-from=type=registry,ref=ghcr.io/${{ github.repository }}-buildcache:${{ matrix.platform }}-main
-            *.cache-to=type=registry,ref=ghcr.io/${{ github.repository }}-buildcache:${{ matrix.platform }}-${{ github.ref_name }},mode=max
+            *.cache-from=type=registry,ref=ghcr.io/${{ env.REPO_LOWER }}-buildcache:${{ matrix.platform }}-${{ github.ref_name }}
+            *.cache-from=type=registry,ref=ghcr.io/${{ env.REPO_LOWER }}-buildcache:${{ matrix.platform }}-main
+            *.cache-to=type=registry,ref=ghcr.io/${{ env.REPO_LOWER }}-buildcache:${{ matrix.platform }}-${{ github.ref_name }},mode=max
 
       - name: Show disk space
         if: always()
@@ -113,6 +117,10 @@ jobs:
         uses: autowarefoundation/autoware-github-actions/set-git-config@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set lower case owner and repository name
+        run: |
+          echo "REPO_LOWER=${GITHUB_REPOSITORY,,}" >> $GITHUB_ENV
 
       - name: Get changed files
         id: changed-files
@@ -146,9 +154,9 @@ jobs:
             *.platform=${{ matrix.arch-platform }}
             *.args.ROS_DISTRO=${{ needs.load-env.outputs.rosdistro }}
             *.args.LIB_DIR=${{ matrix.lib-dir }}
-            *.cache-from=type=registry,ref=ghcr.io/${{ github.repository }}-buildcache:${{ matrix.platform }}-${{ github.ref_name }}
-            *.cache-from=type=registry,ref=ghcr.io/${{ github.repository }}-buildcache:${{ matrix.platform }}-main
-            *.cache-to=type=registry,ref=ghcr.io/${{ github.repository }}-buildcache:${{ matrix.platform }}-${{ github.ref_name }},mode=max
+            *.cache-from=type=registry,ref=ghcr.io/${{ env.REPO_LOWER }}-buildcache:${{ matrix.platform }}-${{ github.ref_name }}
+            *.cache-from=type=registry,ref=ghcr.io/${{ env.REPO_LOWER }}-buildcache:${{ matrix.platform }}-main
+            *.cache-to=type=registry,ref=ghcr.io/${{ env.REPO_LOWER }}-buildcache:${{ matrix.platform }}-${{ github.ref_name }},mode=max
 
       - name: Show disk space
         if: always()
@@ -183,6 +191,10 @@ jobs:
         uses: autowarefoundation/autoware-github-actions/set-git-config@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set lower case owner and repository name
+        run: |
+          echo "REPO_LOWER=${GITHUB_REPOSITORY,,}" >> $GITHUB_ENV
 
       - name: Get changed files
         id: changed-files
@@ -220,9 +232,9 @@ jobs:
             *.args.AUTOWARE_BASE_IMAGE=${{ needs.load-env.outputs.autoware_base_image }}
             *.args.AUTOWARE_BASE_CUDA_IMAGE=${{ needs.load-env.outputs.autoware_base_cuda_image }}
             *.args.LIB_DIR=${{ matrix.lib-dir }}
-            *.cache-from=type=registry,ref=ghcr.io/${{ github.repository }}-buildcache:${{ matrix.platform }}-${{ github.ref_name }}
-            *.cache-from=type=registry,ref=ghcr.io/${{ github.repository }}-buildcache:${{ matrix.platform }}-main
-            *.cache-to=type=registry,ref=ghcr.io/${{ github.repository }}-buildcache:${{ matrix.platform }}-${{ github.ref_name }},mode=max
+            *.cache-from=type=registry,ref=ghcr.io/${{ env.REPO_LOWER }}-buildcache:${{ matrix.platform }}-${{ github.ref_name }}
+            *.cache-from=type=registry,ref=ghcr.io/${{ env.REPO_LOWER }}-buildcache:${{ matrix.platform }}-main
+            *.cache-to=type=registry,ref=ghcr.io/${{ env.REPO_LOWER }}-buildcache:${{ matrix.platform }}-${{ github.ref_name }},mode=max
 
       - name: Show disk space
         if: always()
@@ -295,6 +307,10 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Set lower case owner and repository name
+        run: |
+          echo "REPO_LOWER=${GITHUB_REPOSITORY,,}" >> $GITHUB_ENV
+
       - name: Get changed files
         id: changed-files
         uses: step-security/changed-files@v46
@@ -329,9 +345,9 @@ jobs:
             *.args.AUTOWARE_BASE_IMAGE=${{ needs.load-env-jazzy.outputs.autoware_base_image }}
             *.args.AUTOWARE_BASE_CUDA_IMAGE=${{ needs.load-env-jazzy.outputs.autoware_base_cuda_image }}
             *.args.LIB_DIR=${{ matrix.lib-dir }}
-            *.cache-from=type=registry,ref=ghcr.io/${{ github.repository }}-buildcache:${{ matrix.platform }}-jazzy-${{ github.ref_name }}
-            *.cache-from=type=registry,ref=ghcr.io/${{ github.repository }}-buildcache:${{ matrix.platform }}-jazzy-main
-            *.cache-to=type=registry,ref=ghcr.io/${{ github.repository }}-buildcache:${{ matrix.platform }}-jazzy-${{ github.ref_name }},mode=max
+            *.cache-from=type=registry,ref=ghcr.io/${{ env.REPO_LOWER }}-buildcache:${{ matrix.platform }}-jazzy-${{ github.ref_name }}
+            *.cache-from=type=registry,ref=ghcr.io/${{ env.REPO_LOWER }}-buildcache:${{ matrix.platform }}-jazzy-main
+            *.cache-to=type=registry,ref=ghcr.io/${{ env.REPO_LOWER }}-buildcache:${{ matrix.platform }}-jazzy-${{ github.ref_name }},mode=max
           set-latest: false
           suffix: -jazzy
 
@@ -364,6 +380,10 @@ jobs:
         uses: autowarefoundation/autoware-github-actions/set-git-config@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set lower case owner and repository name
+        run: |
+          echo "REPO_LOWER=${GITHUB_REPOSITORY,,}" >> $GITHUB_ENV
 
       - name: Get changed files
         id: changed-files
@@ -401,9 +421,9 @@ jobs:
             *.args.AUTOWARE_BASE_IMAGE=${{ needs.load-env-jazzy.outputs.autoware_base_image }}
             *.args.AUTOWARE_BASE_CUDA_IMAGE=${{ needs.load-env-jazzy.outputs.autoware_base_cuda_image }}
             *.args.LIB_DIR=${{ matrix.lib-dir }}
-            *.cache-from=type=registry,ref=ghcr.io/${{ github.repository }}-buildcache:${{ matrix.platform }}-jazzy-cuda-${{ github.ref_name }}
-            *.cache-from=type=registry,ref=ghcr.io/${{ github.repository }}-buildcache:${{ matrix.platform }}-jazzy-cuda-main
-            *.cache-to=type=registry,ref=ghcr.io/${{ github.repository }}-buildcache:${{ matrix.platform }}-jazzy-cuda-${{ github.ref_name }},mode=max
+            *.cache-from=type=registry,ref=ghcr.io/${{ env.REPO_LOWER }}-buildcache:${{ matrix.platform }}-jazzy-cuda-${{ github.ref_name }}
+            *.cache-from=type=registry,ref=ghcr.io/${{ env.REPO_LOWER }}-buildcache:${{ matrix.platform }}-jazzy-cuda-main
+            *.cache-to=type=registry,ref=ghcr.io/${{ env.REPO_LOWER }}-buildcache:${{ matrix.platform }}-jazzy-cuda-${{ github.ref_name }},mode=max
           suffix: -jazzy
 
       - name: Show disk space
